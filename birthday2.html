@@ -1,0 +1,1140 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday 💖</title>
+
+<style>
+
+/* =========================
+   BASIC SETUP
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at 50% 40%,
+        #35145f 0%,
+        #17082d 45%,
+        #05010d 100%);
+
+    color: white;
+
+    cursor: default;
+}
+
+
+/* =========================
+   MOUSE GLOW
+========================= */
+
+.mouse-glow {
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+        rgba(255, 80, 220, 0.20),
+        transparent 70%);
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle {
+    position: fixed;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    animation: particleFloat 6s linear infinite;
+
+    opacity: 0.6;
+}
+
+@keyframes particleFloat {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MAIN SCREEN
+========================= */
+
+.screen {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    width: min(90%, 600px);
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.5),
+        0 0 50px rgba(255,80,220,0.15);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* CARD HOVER */
+
+.card:hover {
+
+    box-shadow:
+        0 25px 100px rgba(0,0,0,0.7),
+        0 0 70px rgba(255,80,220,0.4);
+
+}
+
+
+/* =========================
+   SMALL TEXT
+========================= */
+
+.subtitle {
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+    color: #e9b5ff;
+
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+
+    font-size:
+        clamp(42px, 9vw, 75px);
+
+    margin-bottom: 15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ff8ddd,
+            #c084fc,
+            #ffffff
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    animation:
+        gradientMove 4s infinite linear;
+
+}
+
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    color: #f1ddff;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+.gift {
+
+    width: 120px;
+    height: 100px;
+
+    margin: 25px auto 35px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    animation:
+        giftFloat 2s infinite ease-in-out;
+
+}
+
+
+@keyframes giftFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+/* Gift box */
+
+.gift-box {
+
+    position: absolute;
+
+    bottom: 0;
+    left: 10px;
+
+    width: 100px;
+    height: 70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4fb3,
+            #9b4dff
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,50,200,0.4);
+
+}
+
+
+/* Gift ribbon vertical */
+
+.gift-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+
+    height: 70px;
+
+    left: 41px;
+
+    background: #ffd166;
+
+}
+
+
+/* Gift lid */
+
+.gift-lid {
+
+    position: absolute;
+
+    left: 5px;
+
+    top: 15px;
+
+    width: 110px;
+
+    height: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff70c9,
+            #b85cff
+        );
+
+    border-radius: 7px;
+
+    z-index: 2;
+
+    transition: 0.5s;
+
+}
+
+
+/* Lid hover */
+
+.gift:hover .gift-lid {
+
+    transform:
+        translateY(-25px)
+        rotate(-5deg);
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4db8,
+            #8d55ff
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,70,200,0.5);
+
+    transition: 0.3s;
+
+}
+
+
+button:hover {
+
+    transform:
+        scale(1.12)
+        translateY(-3px);
+
+    box-shadow:
+        0 0 30px #ff4db8,
+        0 0 70px rgba(141,85,255,0.7);
+
+}
+
+
+button:active {
+
+    transform:
+        scale(0.95);
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+
+    display: none;
+
+    animation:
+        messageAppear 1.5s ease forwards;
+
+}
+
+
+.message.show {
+
+    display: block;
+
+}
+
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.8);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.message h2 {
+
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+    color: #ffb4e9;
+
+}
+
+
+.message p {
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #f8eaff;
+
+}
+
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    animation:
+        heartFloat 5s linear forwards;
+
+}
+
+
+@keyframes heartFloat {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.6);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg)
+            scale(1.4);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================
+   CLICK SPARK
+========================= */
+
+.spark {
+
+    position: fixed;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background: #ffd6f7;
+
+    z-index: 20;
+
+    animation:
+        sparkAnimation 0.8s forwards;
+
+}
+
+
+@keyframes sparkAnimation {
+
+    to {
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .card {
+
+        padding: 35px 20px;
+
+    }
+
+    .description {
+
+        font-size: 15px;
+
+    }
+
+    .message p {
+
+        font-size: 15px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- Mouse glow -->
+
+<div
+    class="mouse-glow"
+    id="mouseGlow">
+</div>
+
+
+<!-- Main -->
+
+<div class="screen">
+
+    <div
+        class="card"
+        id="card">
+
+
+        <div class="subtitle">
+
+            A little surprise for you ✨
+
+        </div>
+
+
+        <h1>
+
+            Happy Birthday 💖
+
+        </h1>
+
+
+        <p class="description">
+
+            Someone very special deserves
+            something a little magical... 🌙
+
+        </p>
+
+
+        <!-- Gift -->
+
+        <div
+            class="gift"
+            id="gift">
+
+            <div class="gift-lid"></div>
+
+            <div class="gift-box"></div>
+
+        </div>
+
+
+        <button
+            id="surpriseButton">
+
+            🎁 Open Your Surprise
+
+        </button>
+
+
+        <!-- Message -->
+
+        <div
+            class="message"
+            id="message">
+
+            <h2>
+
+                For You 🌸
+
+            </h2>
+
+            <p>
+
+                We met a long time ago,
+                but somehow the memories
+                still feel like yesterday. 💕
+
+                <br><br>
+
+                Even though we are far apart,
+                I still miss our conversations,
+                our laughs,
+                and all those little moments
+                that made our friendship special.
+
+                <br><br>
+
+                Distance can keep two people
+                from meeting every day,
+                but it can't erase
+                beautiful memories. ✨
+
+                <br><br>
+
+                I hope this birthday brings you
+                countless smiles,
+                beautiful surprises,
+                and everything you've been
+                wishing for. 🎂💖
+
+                <br><br>
+
+                Happy Birthday,
+                my dear friend. 🌷
+
+                <br><br>
+
+                <strong>
+                    I miss you a lot. 🥹💗
+                </strong>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   MOUSE GLOW
+========================= */
+
+const mouseGlow =
+    document.getElementById("mouseGlow");
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        mouseGlow.style.left =
+            event.clientX + "px";
+
+        mouseGlow.style.top =
+            event.clientY + "px";
+
+
+        /* Create tiny sparkles */
+
+        if(Math.random() < 0.18) {
+
+            createMouseSpark(
+                event.clientX,
+                event.clientY
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   CARD 3D TILT
+========================= */
+
+const card =
+    document.getElementById("card");
+
+card.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            card.getBoundingClientRect();
+
+        const x =
+            event.clientX - rect.left;
+
+        const y =
+            event.clientY - rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const rotateX =
+            (y - centerY) / 15;
+
+        const rotateY =
+            (centerX - x) / 15;
+
+        card.style.transform =
+            `perspective(1000px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             scale(1.02)`;
+
+    }
+);
+
+
+card.addEventListener(
+    "mouseleave",
+    function() {
+
+        card.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+
+    }
+);
+
+
+/* =========================
+   BUTTON
+========================= */
+
+const button =
+    document.getElementById(
+        "surpriseButton"
+    );
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+button.addEventListener(
+    "click",
+    function() {
+
+        message.classList.add("show");
+
+        button.style.display =
+            "none";
+
+        document.getElementById("gift")
+            .style.display = "none";
+
+
+        /* Big celebration */
+
+        for(let i = 0; i < 70; i++) {
+
+            setTimeout(
+                createHeart,
+                i * 30
+            );
+
+        }
+
+
+        for(let i = 0; i < 40; i++) {
+
+            setTimeout(
+                createConfetti,
+                i * 20
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   GIFT CLICK
+========================= */
+
+document.getElementById("gift")
+.addEventListener(
+    "click",
+    function() {
+
+        button.click();
+
+    }
+);
+
+
+/* =========================
+   HEARTS
+========================= */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "heart";
+
+    const symbols = [
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "💞",
+        "✨",
+        "🌸",
+        "💫"
+    ];
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random()
+                * symbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 4)
+        + "s";
+
+    document.body.appendChild(
+        heart
+    );
+
+    setTimeout(
+        () => heart.remove(),
+        7000
+    );
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti() {
+
+    const confetti =
+        document.createElement("div");
+
+    confetti.style.position =
+        "fixed";
+
+    confetti.style.width =
+        "8px";
+
+    confetti.style.height =
+        "8px";
+
+    confetti.style.left =
+        "50vw";
+
+    confetti.style.top =
+        "50vh";
+
+    confetti.style.background =
+        `hsl(${Math.random()*360},100%,70%)`;
+
+    confetti.style.borderRadius =
+        "2px";
+
+    confetti.style.zIndex =
+        "50";
+
+    confetti.style.pointerEvents =
+        "none";
+
+
+    const x =
+        (Math.random() - 0.5)
+        * 1000;
+
+    const y =
+        (Math.random() - 0.5)
+        * 800;
+
+
+    confetti.animate(
+        [
+            {
+                transform:
+                    "translate(0,0) rotate(0deg)",
+                opacity: 1
+            },
+
+            {
+                transform:
+                    `translate(${x}px,${y}px)
+                     rotate(${Math.random()*720}deg)`,
+                opacity: 0
+            }
+        ],
+        {
+            duration:
+                1500 + Math.random()*1000,
+
+            easing:
+                "cubic-bezier(.2,.8,.3,1)"
+        }
+    );
+
+
+    document.body.appendChild(
+        confetti
+    );
+
+
+    setTimeout(
+        () => confetti.remove(),
+        2500
+    );
+
+}
+
+
+/* =========================
+   MOUSE SPARK
+========================= */
+
+function createMouseSpark(x,y) {
+
+    const spark =
+        document.createElement("div");
+
+    spark.className =
+        "spark";
+
+    spark.style.left =
+        x + "px";
+
+    spark.style.top =
+        y + "px";
+
+
+    const angle =
+        Math.random()
+        * Math.PI
+        * 2;
+
+    const distance =
+        20 + Math.random()*30;
+
+
+    spark.style.setProperty(
+        "--x",
+        Math.cos(angle)
+        * distance + "px"
+    );
+
+    spark.style.setProperty(
+        "--y",
+        Math.sin(angle)
+        * distance + "px"
+    );
+
+
+    document.body.appendChild(
+        spark
+    );
+
+
+    setTimeout(
+        () => spark.remove(),
+        800
+    );
+
+}
+
+
+/* =========================
+   BACKGROUND PARTICLES
+========================= */
+
+for(let i = 0; i < 50; i++) {
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "vw";
+
+    particle.style.top =
+        Math.random() * 100 + "vh";
+
+    particle.style.animationDelay =
+        Math.random() * 6 + "s";
+
+    particle.style.animationDuration =
+        (4 + Math.random() * 6) + "s";
+
+    document.body.appendChild(
+        particle
+    );
+
+}
+
+
+/* =========================
+   RANDOM FLOATING HEARTS
+========================= */
+
+setInterval(
+    createHeart,
+    1800
+);
+
+</script>
+
+</body>
+</html>
+```
